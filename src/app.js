@@ -2,6 +2,7 @@
 
 import express from "express"; // importar o express
 const app = express(); // criar uma instância do express
+app.use(express.json()); // ler body com json
 
 
 // mock
@@ -22,6 +23,11 @@ app.get('/', (req, res) => {
 
 app.get('/livros', (req, res) => {
     res.status(200).send(livros);
+});
+
+app.post('/livros', (req, res) => {
+    livros.push(req.body);
+    res.status(201).send("Seleção cadastrada com sucesso!");
 });
 
 
